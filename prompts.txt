@@ -1,0 +1,19 @@
+
+—REQUEST—
+id=1
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=Explain why transformer decode can become memory-bound even when GPU utilization looks high.
+max_new_tokens=1000
+temperature=0.6
+top_p=0.9
+top_k=40
+
+—REQUEST—
+id=2
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=Explain the difference between prefill and decode in transformer inference, focusing on compute intensity, KV cache reads, and latency.
+max_new_tokens=1000
+temperature=0.6
+top_p=0.9
+top_k=40
+
