@@ -463,7 +463,7 @@ int main(int argc, char** argv)
 	llama_batch_free(batch);
 	llama_free(context);
 	context = llama_init_from_model(model,context_params);
-	cout << red << "################# RUNNING BASELINE RUN #####################" << reset << endl;
+	cout << red << "################# RUNNING AN ENERGY EFFICIENT RUN #####################" << reset << endl;
 	power.start_power_log(log_file_name);
 	start = time.time_now();	
 	batch = obj.llm_prefill();
