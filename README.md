@@ -1,4 +1,4 @@
-AVIS Inference
+# AVIS Inference
 
 AVIS Inference is an experimental energy-aware LLM inference runtime built around llama.cpp.
 
@@ -6,7 +6,7 @@ The project measures inference latency, GPU power usage, energy consumption, tok
 
 AVIS currently focuses on 4-bit GGUF models, especially 3B and 7B parameter models running on NVIDIA GPUs.
 
-Current Features
+# Current Features
 
 * Runs GGUF models through llama.cpp
 * Measures total inference latency
@@ -24,7 +24,6 @@ Project Status
 AVIS Inference is currently an experimental research prototype.
 
 # Future Update:
-# ---------------
 Avis will we be re-written in RUST for more memory safety, The source code will be modularized,
 the emphasis will be on writing clean code with best practices, the inference engine will have it's own HTTP layer
 written in python to upload and run AI models and get gpu telemetry. For testing, the engine will be built for a 4 gpu  node 
