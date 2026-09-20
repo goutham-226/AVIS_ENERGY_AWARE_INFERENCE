@@ -23,8 +23,8 @@ Project Status
 
 AVIS Inference is currently an experimental research prototype.
 
-##Future Update:
-##---------------
+# Future Update:
+# ---------------
 Avis will we be re-written in RUST for more memory safety, The source code will be modularized,
 the emphasis will be on writing clean code with best practices, the inference engine will have it's own HTTP layer
 written in python to upload and run AI models and get gpu telemetry. For testing, the engine will be built for a 4 gpu  node 
