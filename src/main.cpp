@@ -21,6 +21,8 @@ using namespace std;
 #define cyan "\033[36m"
 #define reset "\033[0m"
 
+typedef unsigned int u_int;
+
 
 //function to take in logs and only print the specific logs especially one with errors
 static void llama_log_silencer(enum ggml_log_level level, const char * text, void * user_data) {
@@ -115,9 +117,9 @@ class powermetrics {
 
 	}
 
-	unsigned int get_sm_clock()
+	u_int get_sm_clock()
 	{
-    		unsigned int sm_clock = 0;
+    		u_int sm_clock = 0;
     		nvmlReturn_t result = nvmlDeviceGetClockInfo(gpu,NVML_CLOCK_SM,&sm_clock);
 	    	if (result != NVML_SUCCESS)
     		{
