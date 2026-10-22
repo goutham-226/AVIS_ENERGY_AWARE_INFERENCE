@@ -29,8 +29,8 @@ results/
 *.o
 *.out
 a.out
-avis
-avis_bench
+/avis
+/avis_bench
 
 # Editors / OS
 .idea/

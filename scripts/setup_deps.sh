@@ -43,6 +43,8 @@ cmake -S "${THIRD_PARTY}/llama.cpp" -B "${THIRD_PARTY}/llama.cpp/build" -G Ninja
     -DLLAMA_BUILD_EXAMPLES=OFF \
     -DLLAMA_BUILD_TOOLS=OFF \
     -DLLAMA_BUILD_SERVER=OFF \
+    -DLLAMA_BUILD_APP=OFF \
+    -DLLAMA_BUILD_COMMON=OFF \
     -DLLAMA_CURL=OFF
 cmake --build "${THIRD_PARTY}/llama.cpp/build" --parallel
 cmake --install "${THIRD_PARTY}/llama.cpp/build"
