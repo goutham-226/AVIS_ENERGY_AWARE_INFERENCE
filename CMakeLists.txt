@@ -30,6 +30,7 @@ add_library(avis_core
     src/kv/block_manager.cpp
     src/engine/scheduler.cpp
     src/engine/clock_policy.cpp
+    src/engine/engine.cpp
     src/telemetry/power_sampler.cpp
 )
 target_include_directories(avis_core PUBLIC include)
