@@ -1,3 +1,5 @@
+# AVIS benchmark prompts. Every request shares the same system prompt, which
+# also exercises the prefix cache. Format: see include/avis/workload/workload.hpp.
 
 —REQUEST—
 id=1
@@ -17,3 +19,128 @@ temperature=0.6
 top_p=0.9
 top_k=40
 
+—REQUEST—
+id=3
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=What is continuous batching and why does it raise LLM serving throughput?
+max_new_tokens=1000
+temperature=0.7
+top_p=0.9
+top_k=40
+
+—REQUEST—
+id=4
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=Describe how paged attention avoids KV cache fragmentation.
+max_new_tokens=1000
+temperature=0.7
+top_p=0.9
+top_k=40
+
+—REQUEST—
+id=5
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=How does lowering a GPU's SM clock affect power draw and memory-bound kernels?
+max_new_tokens=1000
+temperature=0.6
+top_p=0.9
+top_k=40
+
+—REQUEST—
+id=6
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=Compare tokens per joule and tokens per second as serving metrics.
+max_new_tokens=1000
+temperature=0.7
+top_p=0.9
+top_k=40
+
+—REQUEST—
+id=7
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=Why does 4-bit weight quantization speed up single-stream decoding?
+max_new_tokens=1000
+temperature=0.6
+top_p=0.9
+top_k=40
+
+—REQUEST—
+id=8
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=What is prefix caching and when does it help most?
+max_new_tokens=1000
+temperature=0.7
+top_p=0.9
+top_k=40
+
+—REQUEST—
+id=9
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=Explain time to first token versus time per output token.
+max_new_tokens=1000
+temperature=0.6
+top_p=0.9
+top_k=40
+
+—REQUEST—
+id=10
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=What limits the maximum batch size on a single consumer GPU?
+max_new_tokens=1000
+temperature=0.7
+top_p=0.9
+top_k=40
+
+—REQUEST—
+id=11
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=Describe the roofline model in three sentences.
+max_new_tokens=1000
+temperature=0.6
+top_p=0.9
+top_k=40
+
+—REQUEST—
+id=12
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=How does flash attention reduce memory traffic?
+max_new_tokens=1000
+temperature=0.7
+top_p=0.9
+top_k=40
+
+—REQUEST—
+id=13
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=What causes tail latency in an LLM inference server?
+max_new_tokens=1000
+temperature=0.7
+top_p=0.9
+top_k=40
+
+—REQUEST—
+id=14
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=Explain dynamic voltage and frequency scaling on GPUs.
+max_new_tokens=1000
+temperature=0.6
+top_p=0.9
+top_k=40
+
+—REQUEST—
+id=15
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=Why do chunked prefills help keep decode latency stable?
+max_new_tokens=1000
+temperature=0.7
+top_p=0.9
+top_k=40
+
+—REQUEST—
+id=16
+system_prompt=You are AVIS, a concise technical assistant. Answer clearly and directly.
+prompt=Give three ways to reduce the energy cost of LLM inference.
+max_new_tokens=1000
+temperature=0.7
+top_p=0.9
+top_k=40
