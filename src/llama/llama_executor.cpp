@@ -61,6 +61,7 @@ Result<std::unique_ptr<LlamaExecutor>> LlamaExecutor::load(const LlamaConfig& co
 
     auto model_params = llama_model_default_params();
     model_params.n_gpu_layers = config.n_gpu_layers;
+    model_params.progress_callback = [](float, void*) { return true; }; // no loading dots on stderr
     exec->model_.reset(llama_model_load_from_file(config.model_path.c_str(), model_params));
     if (!exec->model_) {
         return make_error(std::format("failed to load model '{}'", config.model_path), ErrorCode::unavailable);
