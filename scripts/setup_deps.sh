@@ -37,6 +37,7 @@ fi
 cmake -S "${THIRD_PARTY}/llama.cpp" -B "${THIRD_PARTY}/llama.cpp/build" -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="${THIRD_PARTY}/install" \
+    -DCMAKE_INSTALL_RPATH='$ORIGIN' \
     -DGGML_CUDA="${use_cuda}" \
     -DCMAKE_CUDA_ARCHITECTURES="${cuda_arch}" \
     -DLLAMA_BUILD_TESTS=OFF \

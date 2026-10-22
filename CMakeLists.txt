@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
-project(avis VERSION 0.2.0 DESCRIPTION "Energy-aware LLM inference engine" LANGUAGES CXX)
+project(avis VERSION 0.2.0 DESCRIPTION "Energy-aware LLM inference engine" LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -36,6 +36,7 @@ add_library(avis_core
     src/workload/workload.cpp
     src/report/stats.cpp
     src/report/chart.cpp
+    src/bench/runner.cpp
 )
 target_include_directories(avis_core PUBLIC include)
 target_compile_features(avis_core PUBLIC cxx_std_23)
@@ -59,6 +60,30 @@ if(AVIS_WITH_NVML)
         message(WARNING "NVML not found: building without GPU telemetry")
         set(AVIS_WITH_NVML OFF)
     endif()
+endif()
+
+# ---------------------------------------------------------------------------
+# llama.cpp backend and the avis CLI
+# ---------------------------------------------------------------------------
+if(AVIS_WITH_LLAMA)
+    find_package(llama CONFIG)
+    if(llama_FOUND)
+        add_library(avis_llama src/llama/llama_executor.cpp)
+        target_link_libraries(avis_llama PUBLIC avis_core llama PRIVATE avis_warnings)
+
+        add_executable(avis apps/avis.cpp)
+        target_link_libraries(avis PRIVATE avis_core avis_llama avis_warnings)
+        if(TARGET avis_nvml)
+            target_link_libraries(avis PRIVATE avis_nvml)
+        endif()
+    else()
+        message(WARNING "llama.cpp not found (run scripts/setup_deps.sh): building without the CLI")
+        set(AVIS_WITH_LLAMA OFF)
+    endif()
+endif()
+
+if(AVIS_BUILD_BENCHMARKS)
+    add_subdirectory(bench)
 endif()
 
 if(AVIS_BUILD_TESTS)

@@ -35,6 +35,7 @@ public:
 
     [[nodiscard]] Result<std::vector<Token>> execute(const engine::StepPlan& plan) override;
     void release(RequestId id) override;
+    void reset() override;
     [[nodiscard]] bool is_eog(Token token) const override;
     [[nodiscard]] std::string token_to_piece(Token token) const override;
 

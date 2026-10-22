@@ -21,6 +21,10 @@ public:
     // Drops per-request state such as the sampler.
     virtual void release(RequestId id) = 0;
 
+    // Clears all KV state and per-request state. Called when an engine takes
+    // ownership, since its block manager starts from an empty cache.
+    virtual void reset() = 0;
+
     [[nodiscard]] virtual bool is_eog(Token token) const = 0;
     [[nodiscard]] virtual std::string token_to_piece(Token token) const = 0;
 };

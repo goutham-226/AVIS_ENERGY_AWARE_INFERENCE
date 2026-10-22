@@ -14,6 +14,7 @@ Engine::Engine(Executor& executor, EngineConfig config, ClockPolicy& policy, tel
       blocks_(config.kv),
       scheduler_(config.scheduler, blocks_),
       origin_(Clock::now()) {
+    executor_.reset();
     if (gpu_) {
         if (const auto clocks = gpu_->supported_sm_clocks(); !clocks.empty()) {
             min_clock_mhz_ = clocks.front();

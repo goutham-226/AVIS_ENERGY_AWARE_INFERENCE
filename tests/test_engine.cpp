@@ -37,6 +37,7 @@ public:
         return out;
     }
     void release(RequestId id) override { released.insert(id); }
+    void reset() override { ++resets; }
     bool is_eog(Token t) const override { return t == eog; }
     std::string token_to_piece(Token t) const override { return std::format("<{}>", t); }
 
@@ -44,6 +45,7 @@ public:
     std::set<RequestId> released;
     std::size_t max_batch = 0;
     int calls = 0;
+    int resets = 0;
     int fail_kv_times = 0;
     bool fail_hard = false;
     Token eog = -1;
@@ -78,6 +80,7 @@ TEST(Engine, SynchronousStepCompletesRequest) {
     EXPECT_EQ(out.metrics.generated_tokens, 3u);
     EXPECT_TRUE(exec.released.contains(out.id));
     EXPECT_EQ(engine.stats().completed, 1u);
+    EXPECT_EQ(exec.resets, 1) << "a new engine must start from a clean backend";
 }
 
 TEST(Engine, ServesConcurrentSubmittersInBatches) {
