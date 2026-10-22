@@ -14,7 +14,9 @@ add_executable(avis_tests
     test_power_sampler.cpp
     test_clock_policy.cpp
     test_engine.cpp
+    test_workload_report.cpp
 )
 target_include_directories(avis_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_compile_definitions(avis_tests PRIVATE AVIS_SOURCE_DIR="${PROJECT_SOURCE_DIR}")
 target_link_libraries(avis_tests PRIVATE avis_core avis_warnings GTest::gtest_main)
 gtest_discover_tests(avis_tests)

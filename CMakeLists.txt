@@ -20,7 +20,8 @@ list(APPEND CMAKE_PREFIX_PATH "${PROJECT_SOURCE_DIR}/third_party/install")
 
 add_library(avis_warnings INTERFACE)
 target_compile_options(avis_warnings INTERFACE
-    $<$<CXX_COMPILER_ID:GNU,Clang>:-Wall -Wextra -Wpedantic -Wshadow -Wnon-virtual-dtor>)
+    $<$<CXX_COMPILER_ID:GNU,Clang>:-Wall -Wextra -Wpedantic -Wshadow -Wnon-virtual-dtor
+                              -Wno-missing-field-initializers>)
 
 # ---------------------------------------------------------------------------
 # Core: scheduling, paged KV accounting, energy policy, telemetry interfaces.
@@ -32,6 +33,9 @@ add_library(avis_core
     src/engine/clock_policy.cpp
     src/engine/engine.cpp
     src/telemetry/power_sampler.cpp
+    src/workload/workload.cpp
+    src/report/stats.cpp
+    src/report/chart.cpp
 )
 target_include_directories(avis_core PUBLIC include)
 target_compile_features(avis_core PUBLIC cxx_std_23)
